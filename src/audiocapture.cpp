@@ -151,11 +151,11 @@ int AudioCapture::setupMicrophoneStream()
      * seems to be impossible with PA's simple API.
      */
     static const pa_buffer_attr buf_attr = {
-        .maxlength = pa_usec_to_bytes(100000 /* 100 msec */, &ss),
+        .maxlength = static_cast<uint32_t>(pa_usec_to_bytes(100000 /* 100 msec */, &ss)),
         .tlength = (uint32_t) -1,
         .prebuf = (uint32_t) -1,
         .minreq = (uint32_t) -1,
-        .fragsize = pa_usec_to_bytes(100000 /* 100 msec */, &ss)
+        .fragsize = static_cast<uint32_t>(pa_usec_to_bytes(100000 /* 100 msec */, &ss))
     };
 
     int error = 0;

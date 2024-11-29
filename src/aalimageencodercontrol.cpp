@@ -118,7 +118,7 @@ void AalImageEncoderControl::init(CameraControl *control)
     m_encoderSettings.setQuality(jpegQualityToQtEncodingQuality(jpegQuality));
 
     if (m_availableSizes.empty()) {
-        qWarning() << "(AalImageEncoderControl::init) No supported resolutions detected for currently selected camera device." << endl;
+        qWarning() << "(AalImageEncoderControl::init) No supported resolutions detected for currently selected camera device." << Qt::endl;
         return;
     }
 
@@ -160,7 +160,7 @@ bool AalImageEncoderControl::setSize(const QSize &size)
     // Select m_currentThumbnailSize so that its aspect ratio is the same
     // as m_currentSize's aspect ratio
     float imageAspectRatio = getAspectRatio();
-    float thumbnailAspectRatio;
+    float thumbnailAspectRatio = 0.0;
 
     // Set the optimal thumbnail image resolution that will be saved to the JPEG file
     if (!m_availableThumbnailSizes.empty()) {
@@ -226,7 +226,7 @@ void AalImageEncoderControl::getPictureSizeCb(void *ctx, int width, int height)
         self->getPictureSize(width, height);
     }
     else
-        qWarning() << "ctx is NULL, cannot get supported camera resolutions." << endl;
+        qWarning() << "ctx is NULL, cannot get supported camera resolutions." << Qt::endl;
 }
 
 void AalImageEncoderControl::getThumbnailSizeCb(void *ctx, int width, int height)
@@ -237,7 +237,7 @@ void AalImageEncoderControl::getThumbnailSizeCb(void *ctx, int width, int height
         self->getThumbnailSize(width, height);
     }
     else
-        qWarning() << "ctx is NULL, cannot get supported thumbnail resolutions." << endl;
+        qWarning() << "ctx is NULL, cannot get supported thumbnail resolutions." << Qt::endl;
 }
 
 void AalImageEncoderControl::getPictureSize(int width, int height)
