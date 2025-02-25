@@ -92,6 +92,29 @@ QString AalServicePlugin::deviceDescription(const QByteArray &service, const QBy
     }
 }
 
+QByteArray AalServicePlugin::defaultDevice(const QByteArray &service) const
+{
+    if (QString::fromLatin1(service) != QLatin1String(Q_MEDIASERVICE_CAMERA)) {
+        return QByteArray();
+    }
+
+    const auto deviceList = devices(service);
+
+    // Prefer the first back-facing camera (should be the first in the list
+    // anyway).
+    for (const auto & device : deviceList) {
+        if (cameraOrientation(device) == QCamera::BackFace)
+            return device;
+    }
+
+    // But if none is found, then return the first camera, if any.
+    if (!deviceList.empty())
+        return deviceList[0];
+
+    // We have no camera.
+    return QByteArray();
+}
+
 int AalServicePlugin::getCameraOrientationOverride(const QString deviceID) const {
     QByteArray propertyName = QString("aal.camera.orientations.%1").arg(deviceID).toLocal8Bit();
 
