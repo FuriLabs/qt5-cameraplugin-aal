@@ -13,7 +13,7 @@ target.path += $$[QT_INSTALL_PLUGINS]/$${PLUGIN_TYPE}
 INSTALLS = target
 
 INCLUDEPATH += /usr/include/hybris/camera /usr/include/hybris/media
-LIBS += -lhybris_ics -lcamera -lmedia -lsharedsignal -L../sharedsignal/
+LIBS += -lhybris_ics -lcamera-hybris -lmedia -lsharedsignal -L../sharedsignal/
 
 OTHER_FILES += shadervideonode.json
 
