@@ -2,7 +2,7 @@ Source: qt5-cameraplugin-aal
 Section: libs
 Priority: optional
 Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
-Build-Depends: debhelper (>= 13),
+Build-Depends: debhelper-compat (= 13),
                libgl1-mesa-dev | libgl-dev,
                libgles2-mesa-dev,
                libhybris-dev,
@@ -19,8 +19,8 @@ Build-Depends: debhelper (>= 13),
                libandroid-properties-dev,
                android-headers,
                qtdeclarative5-private-dev
-Standards-Version: 3.9.4
-Homepage: https://github.com/droidian/qt5-cameraplugin-aal
+Standards-Version: 4.7.2
+Homepage: https://github.com/furilabs/qt5-cameraplugin-aal
 
 Package: qt5-cameraplugin-aal
 Architecture: amd64 armhf i386 arm64
