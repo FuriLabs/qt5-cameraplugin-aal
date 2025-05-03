@@ -73,6 +73,8 @@ QVideoFrame::PixelFormat ShaderVideoNode::pixelFormat() const
  */
 void ShaderVideoNode::setCurrentFrame(const QVideoFrame &frame, FrameFlags flags)
 {
+    (void) flags;
+
     void *ci = 0;
     if (frame.availableMetaData().contains("CamControl")) {
         ci = frame.metaData("CamControl").value<void *>();
